@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+
+require 'circuit_logic'
+
+CircuitLogic::Parser.parse(ARGF.read).each { |result| puts result }
