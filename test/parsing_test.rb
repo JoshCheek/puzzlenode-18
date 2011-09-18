@@ -2,9 +2,19 @@ require 'circuit_logic'
 
 module CircuitLogic
   class TestParser < Test::Unit::TestCase
+    class LightMock < Struct.new(:on)
+      def on?
+        on
+      end
+      
+      def ==(other)
+        on? == other.on?
+      end
+    end
+    
     def setup
-      @on = On.new
-      @off = Off.new
+      @on  = LightMock.new true
+      @off = LightMock.new false
     end
   
     def assert_parses_to(expected, string)
